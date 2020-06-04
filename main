@@ -1,0 +1,86 @@
+using System;
+
+namespace DnD_dice_assistant
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string userdiceInput;
+            int userdiceNum;
+
+            for (int i = 1; i < 42069; i++)
+            {
+                do
+                {
+                   Console.WriteLine("(Roll  #" + i + ")");
+                   Console.WriteLine("Roll dice: d4, d6, d8, d10, d12, d20:   ");
+                   userdiceInput = Console.ReadLine();
+                   Int32.TryParse(userdiceInput, out userdiceNum);
+                   Console.WriteLine();
+                   Console.WriteLine();
+
+                }
+                    while ((userdiceNum != 4) && (userdiceNum != 6) && (userdiceNum != 8) && (userdiceNum != 10) && (userdiceNum != 12) && (userdiceNum != 20));
+
+                if (!(userdiceInput.Contains('a') && userdiceInput.Contains('d')))
+                {
+                    Dice_roll(userdiceNum);
+                }
+                //if (userdiceInput.Contains('a'))
+                //{
+                //    Advantage_roll(userdiceNum);
+                //}
+                //if (userdiceInput.Contains('a'))
+                //{
+                //   Disadvantage_roll(userdiceNum);
+                //}
+            }
+
+
+        }
+
+        public static void Dice_roll(int dice_num)
+        {
+
+            Random randomroll = new Random();
+            int diceroll = randomroll.Next(1, (dice_num + 1));
+            Console.WriteLine("*   d" + dice_num + " roll: You rolled  " + diceroll);
+            Console.WriteLine();
+
+        }
+
+        public static void Advantage_roll(int dice_num)
+        {
+            int roll1 = DiceRoll.Adv_Die(dice_num);
+            Console.WriteLine("First  Roll: " + roll1);
+            int roll2 = DiceRoll.Adv_Die(dice_num);
+            Console.WriteLine("Second Roll: " + roll2 + "\n");
+            if (roll1 >= roll2)
+            {
+                Console.WriteLine("*   d" + dice_num + " roll with advantage: You rolled  " + roll1 + "\n");
+            }
+            if (roll2 > roll1)
+            {
+                Console.WriteLine("*   d" + dice_num + " roll with advantage: You rolled  " + roll2 + "\n");
+            }
+        }
+        public static void Disadvantage_roll(int dice_num)
+        {
+            int roll1 = DiceRoll.Adv_Die(dice_num);
+            Console.WriteLine("First  Roll: " + roll1);
+            int roll2 = DiceRoll.Adv_Die(dice_num);
+            Console.WriteLine("Second Roll: " + roll2 + "\n");
+            if (roll1 <= roll2)
+            {
+                Console.WriteLine("*   d" + dice_num + " roll with disadvantage: You rolled  " + roll1 + "\n");
+            }
+            if (roll2 < roll1)
+            {
+                Console.WriteLine("*   d" + dice_num + " roll with disadvantage: You rolled  " + roll2 + "\n");
+            }
+
+        }
+
+    }
+}
