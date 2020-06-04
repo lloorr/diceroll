@@ -1,0 +1,13 @@
+namespace DnD_dice_assistant
+{
+    class DiceRoll
+    {
+        public static int Adv_Die(int dice_num)
+        {
+            Random randomroll = new Random();
+            int diceroll = randomroll.Next(1, (dice_num + 1));
+            return diceroll;
+        }
+
+    }
+}
